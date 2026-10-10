@@ -1,0 +1,397 @@
+
+/* ========================================
+   VYDRAX — Cyber Defense Platform
+   Authentication UI
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: #edf4ff;
+  background: #060b16;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #060b16;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* PAGE BACKGROUND */
+
+.auth-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 15% 15%,
+      rgba(14, 165, 233, 0.13),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 85% 80%,
+      rgba(79, 70, 229, 0.13),
+      transparent 35%
+    ),
+    #060b16;
+}
+
+/* Subtle background grid */
+
+.auth-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(100, 150, 220, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 150, 220, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+/* AUTHENTICATION CARD */
+
+.auth-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 465px;
+  padding: 42px;
+  border: 1px solid rgba(125, 170, 230, 0.2);
+  border-radius: 24px;
+  background: rgba(12, 23, 41, 0.94);
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(18px);
+}
+
+/* BRAND */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 38px;
+}
+
+.brand-symbol {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #06111e;
+  background: linear-gradient(135deg, #67e8f9, #38bdf8 55%, #818cf8);
+  box-shadow: 0 8px 30px rgba(56, 189, 248, 0.2);
+  font-size: 27px;
+  font-weight: 900;
+}
+
+.brand h1 {
+  margin: 0;
+  color: #f4f8ff;
+  font-size: 27px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.brand-subtitle {
+  margin: 6px 0 0;
+  color: #8298b7;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+/* HEADING */
+
+.auth-heading {
+  margin-bottom: 27px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 13px;
+  color: #54d4f7;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+}
+
+.auth-heading h2 {
+  margin: 0 0 10px;
+  color: #f3f7ff;
+  font-size: 30px;
+  line-height: 1.25;
+  font-weight: 750;
+  letter-spacing: -0.8px;
+}
+
+.auth-heading p {
+  margin: 0;
+  color: #91a3bd;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* FORM */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  color: #d4deee;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.auth-form input {
+  width: 100%;
+  height: 48px;
+  padding: 0 15px;
+  border: 1px solid #293b55;
+  border-radius: 10px;
+  outline: none;
+  color: #f0f6ff;
+  background: #091426;
+  font-size: 14px;
+  font-weight: 400;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.auth-form input::placeholder {
+  color: #647994;
+}
+
+.auth-form input:hover {
+  border-color: #3a5274;
+}
+
+.auth-form input:focus {
+  border-color: #38bdf8;
+  background: #0b192c;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+}
+
+/* ERROR MESSAGE */
+
+.error-message {
+  padding: 12px 14px;
+  border: 1px solid rgba(248, 113, 113, 0.28);
+  border-radius: 10px;
+  color: #fca5a5;
+  background: rgba(127, 29, 29, 0.2);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* PRIMARY BUTTON */
+
+.primary-button {
+  width: 100%;
+  min-height: 49px;
+  border: none;
+  border-radius: 10px;
+  color: #04111e;
+  background: linear-gradient(100deg, #67e8f9, #38bdf8 55%, #60a5fa);
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+  font-size: 14px;
+  font-weight: 800;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.auth-submit {
+  margin-top: 3px;
+}
+
+.primary-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 12px 30px rgba(56, 189, 248, 0.24);
+}
+
+.primary-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.primary-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* REGISTER / LOGIN SWITCH */
+
+.auth-switch {
+  margin: 25px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  color: #899bb4;
+  font-size: 13px;
+  text-align: center;
+}
+
+.text-button {
+  padding: 4px 2px;
+  border: none;
+  color: #55d5fa;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.text-button:hover {
+  color: #a5edff;
+  text-decoration: underline;
+}
+
+/* LOADING SCREEN */
+
+.loading-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  color: #a9bdd7;
+  background:
+    radial-gradient(ellipse at center, #10223c 0%, #060b16 65%);
+}
+
+.loading-screen p {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.loading-orb {
+  width: 46px;
+  height: 46px;
+  border: 3px solid #223650;
+  border-top-color: #38bdf8;
+  border-right-color: #818cf8;
+  border-radius: 50%;
+  animation: vyrdax-spin 0.8s linear infinite;
+}
+
+@keyframes vyrdax-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ACCESSIBILITY */
+
+button:focus-visible {
+  outline: 2px solid #67e8f9;
+  outline-offset: 4px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 520px) {
+  .auth-page {
+    padding: 20px 14px;
+  }
+
+  .auth-card {
+    padding: 28px 23px;
+    border-radius: 19px;
+  }
+
+  .brand {
+    margin-bottom: 32px;
+  }
+
+  .brand h1 {
+    font-size: 24px;
+  }
+
+  .auth-heading h2 {
+    font-size: 26px;
+  }
+
+  .auth-form {
+    gap: 16px;
+  }
+}
+
+@media (max-height: 650px) and (min-width: 521px) {
+  .auth-page {
+    align-items: flex-start;
+  }
+
+  .auth-card {
+    margin: 15px auto;
+    padding: 28px 38px;
+  }
+
+  .brand {
+    margin-bottom: 24px;
+  }
+
+  .auth-heading {
+    margin-bottom: 20px;
+  }
+}
